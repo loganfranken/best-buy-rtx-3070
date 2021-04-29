@@ -1,0 +1,169 @@
+{
+    "days": [
+        {
+            "drops": [
+                {
+                    "inStock": "2021-01-05T16:44:00.000Z",
+                    "outOfStock": "2021-01-05T16:47:00.000Z",
+                    "dropLength": 3,
+                    "minutesSinceLastDrop": 0
+                },
+                {
+                    "inStock": "2021-01-05T16:56:00.000Z",
+                    "outOfStock": "2021-01-05T17:05:00.000Z",
+                    "dropLength": 9,
+                    "minutesSinceLastDrop": 9
+                },
+                {
+                    "inStock": "2021-01-05T17:41:00.000Z",
+                    "outOfStock": "2021-01-05T17:47:00.000Z",
+                    "dropLength": 6,
+                    "minutesSinceLastDrop": 36
+                }
+            ],
+            "daysSinceLastDrop": 0
+        },
+        {
+            "drops": [
+                {
+                    "inStock": "2021-01-22T16:33:00.000Z",
+                    "outOfStock": "2021-01-22T16:36:00.000Z",
+                    "dropLength": 3,
+                    "minutesSinceLastDrop": 0
+                }
+            ],
+            "daysSinceLastDrop": 16
+        },
+        {
+            "drops": [
+                {
+                    "inStock": "2021-02-09T16:15:00.000Z",
+                    "outOfStock": "2021-02-09T16:34:00.000Z",
+                    "dropLength": 19,
+                    "minutesSinceLastDrop": 0
+                },
+                {
+                    "inStock": "2021-02-09T16:40:00.000Z",
+                    "outOfStock": "2021-02-09T16:43:00.000Z",
+                    "dropLength": 3,
+                    "minutesSinceLastDrop": 6
+                },
+                {
+                    "inStock": "2021-02-09T16:55:00.000Z",
+                    "outOfStock": "2021-02-09T16:58:00.000Z",
+                    "dropLength": 3,
+                    "minutesSinceLastDrop": 12
+                }
+            ],
+            "daysSinceLastDrop": 17
+        },
+        {
+            "drops": [
+                {
+                    "inStock": "2021-02-25T17:17:00.000Z",
+                    "outOfStock": "2021-02-25T17:23:00.000Z",
+                    "dropLength": 6,
+                    "minutesSinceLastDrop": 0
+                },
+                {
+                    "inStock": "2021-02-25T18:38:00.000Z",
+                    "outOfStock": "2021-02-25T18:44:00.000Z",
+                    "dropLength": 6,
+                    "minutesSinceLastDrop": 75
+                }
+            ],
+            "daysSinceLastDrop": 16
+        },
+        {
+            "drops": [
+                {
+                    "inStock": "2021-03-12T17:03:00.000Z",
+                    "outOfStock": "2021-03-12T17:42:00.000Z",
+                    "dropLength": 39,
+                    "minutesSinceLastDrop": 0
+                }
+            ],
+            "daysSinceLastDrop": 14
+        },
+        {
+            "drops": [
+                {
+                    "inStock": "2021-04-02T16:33:00.000Z",
+                    "outOfStock": "2021-04-02T16:39:00.000Z",
+                    "dropLength": 6,
+                    "minutesSinceLastDrop": 0
+                },
+                {
+                    "inStock": "2021-04-02T17:52:00.000Z",
+                    "outOfStock": "2021-04-02T17:58:00.000Z",
+                    "dropLength": 6,
+                    "minutesSinceLastDrop": 73
+                }
+            ],
+            "daysSinceLastDrop": 21
+        },
+        {
+            "drops": [
+                {
+                    "inStock": "2021-04-15T16:02:00.000Z",
+                    "outOfStock": "2021-04-15T16:08:00.000Z",
+                    "dropLength": 6,
+                    "minutesSinceLastDrop": 0
+                }
+            ],
+            "daysSinceLastDrop": 12
+        },
+        {
+            "drops": [
+                {
+                    "inStock": "2021-04-28T20:35:00.000Z",
+                    "outOfStock": "2021-04-28T20:41:00.000Z",
+                    "dropLength": 6,
+                    "minutesSinceLastDrop": 0
+                }
+            ],
+            "daysSinceLastDrop": 13
+        }
+    ],
+    "weekdayBreakdown": {
+        "sunday": {
+            "count": 0,
+            "percentage": 0
+        },
+        "monday": {
+            "count": 0,
+            "percentage": 0
+        },
+        "tuesday": {
+            "count": 2,
+            "percentage": 0.25
+        },
+        "wednesday": {
+            "count": 1,
+            "percentage": 0.125
+        },
+        "thursday": {
+            "count": 2,
+            "percentage": 0.25
+        },
+        "friday": {
+            "count": 3,
+            "percentage": 0.375
+        },
+        "saturday": {
+            "count": 0,
+            "percentage": 0
+        }
+    },
+    "minSameDayDrops": 1,
+    "maxSameDayDrops": 3,
+    "minSameDayDiff": 6,
+    "maxSameDayDiff": 75,
+    "minDropDiff": 12,
+    "maxDropDiff": 21,
+    "earliestDropTime": "08:07",
+    "latestDropTime": "13:27",
+    "averageSameDayDrops": 2,
+    "averageSameDayDiffs": 35,
+    "averageDropDiffs": 14
+}
