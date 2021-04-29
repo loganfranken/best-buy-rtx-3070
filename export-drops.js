@@ -12,13 +12,11 @@ request(url, (error, response, body) => {
     // First, let's read in all of the rows and pull out the timestamp/status
     const records = [];
     const $rows = $('table tr');
-    const maxRowIndex = $rows.length - 1;
 
     $rows.each((i, elem) => {
 
-        // Skip the header row and the last row (since it's just the first
-        // time the card was out of stock)
-        if(i === 0 || i === maxRowIndex)
+        // Skip the header row
+        if(i === 0)
         {
             return;
         }
@@ -43,24 +41,56 @@ request(url, (error, response, body) => {
     // Next, let's sort the records
     records.sort((first, second) => ( first.timestamp.isBefore(second.timestamp) ? -1 : 1 ));
 
-    // Next, let's collapse the individual in stock/out of stock records into 
-    const instances = [];
-    let currInstance = null;
+    // Next, let's collapse the individual in stock/out of stock records into individual drops,
+    // split by day
+    const days = [];
+
+    let currDay = null;
+    let currDrop = null;
 
     records.forEach((record) => {
 
+        // We ignore everything before 2021 since the drops only take on their
+        // semi-consistent pattern in that year
+        if(record.timestamp.isBefore('2021-01-01'))
+        {
+            return;
+        }
+
         if(record.status === 'In Stock')
         {
-            currInstance = {
+            if(currDay === null)
+            {
+                currDay = {
+                    drops: []
+                };
+            }
+            else
+            {
+                const daysSinceLastDrop = record.timestamp.diff(currDrop.outOfStock, 'days');
+                if(daysSinceLastDrop > 0)
+                {
+                    days.push(currDay);
+                    currDay = {
+                        drops: []
+                    };
+                }
+            }
+            
+            currDrop = {
                 inStock: record.timestamp
             };
         }
         else
         {
-            currInstance.outOfStock = record.timestamp;
-            instances.push(currInstance);
+            currDrop.outOfStock = record.timestamp;
+            currDay.drops.push(currDrop);
         }
 
     });
+
+    days.push(currDay);
+
+    console.log(JSON.stringify(days));
 
 });
