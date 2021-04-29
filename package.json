@@ -1,0 +1,26 @@
+{
+  "name": "best-buy-rtx-3070",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loganfranken/best-buy-rtx-3070.git"
+  },
+  "author": "Logan Franken <loganfranken@gmail.com> (http://www.loganfranken.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/loganfranken/best-buy-rtx-3070/issues"
+  },
+  "homepage": "https://github.com/loganfranken/best-buy-rtx-3070#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.6",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
+    "request": "^2.88.2"
+  },
+  "type": "module"
+}
