@@ -16,11 +16,12 @@
     "url": "https://github.com/loganfranken/best-buy-rtx-3070/issues"
   },
   "homepage": "https://github.com/loganfranken/best-buy-rtx-3070#readme",
-  "dependencies": {
+  "dependencies": {},
+  "type": "module",
+  "devDependencies": {
     "cheerio": "^1.0.0-rc.6",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
     "request": "^2.88.2"
-  },
-  "type": "module"
+  }
 }
