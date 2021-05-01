@@ -1,7 +1,13 @@
+import { Provider } from 'react-redux';
 import * as React from 'react';
-import * as ReactDOM from "react-dom";
+import * as ReactDOM from 'react-dom';
+import store from './store';
 
-import App from './App';
+import Application from './Application';
 
-var mountNode = document.getElementById("app");
-ReactDOM.render(<App name="Jane" />, mountNode);
+ReactDOM.render(
+    <Provider store={store}>
+        <Application />
+    </Provider>,
+    document.getElementById('root')
+)

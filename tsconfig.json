@@ -10,6 +10,7 @@
         "target": "es5",
         "allowJs": true,
         "jsx": "react",
+        "alwaysStrict": true
     },
     "include": [
         "./src/**/*"
