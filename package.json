@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm dist/bundle.js",
+    "build-dev": "webpack --mode development",
+    "build-prod": "webpack --mode production",
+    "start": "webpack serve --hot --mode development"
   },
   "repository": {
     "type": "git",
@@ -16,12 +19,31 @@
     "url": "https://github.com/loganfranken/best-buy-rtx-3070/issues"
   },
   "homepage": "https://github.com/loganfranken/best-buy-rtx-3070#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "fontsource-roboto": "^4.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hot-loader": "^4.13.0"
+  },
   "type": "module",
   "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.0",
+    "@babel/preset-react": "^7.13.13",
+    "@hot-loader/react-dom": "^17.0.1",
+    "@types/react": "^17.0.4",
+    "@types/react-dom": "^17.0.3",
+    "babel-loader": "^8.2.2",
     "cheerio": "^1.0.0-rc.6",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "ts-loader": "^9.1.1",
+    "typescript": "^4.2.4",
+    "webpack": "^5.36.1",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }
