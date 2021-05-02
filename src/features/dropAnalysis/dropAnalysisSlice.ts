@@ -1,3 +1,5 @@
+import ApplicationAction from '../../interfaces/ApplicationAction'
+
 const initialState = {
     days: [],
     minSameDayDrops: 0,
@@ -13,16 +15,11 @@ const initialState = {
     averageDropDiffs: 0
 }
 
-interface Action {
-    type: string,
-    payload: object
-}
-
-export default function dropReducer(state = initialState, action: Action)
+export default function dropAnalysisReducer(state = initialState, action: ApplicationAction)
 {
     switch(action.type)
     {
-        case 'drops/changed':
+        case 'dropAnalysis/changed':
             return action.payload;
 
         default:
