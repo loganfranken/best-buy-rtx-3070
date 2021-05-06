@@ -1,5 +1,6 @@
 import ApplicationState from './interfaces/ApplicationState'
 import { Container, CssBaseline, Typography } from '@material-ui/core'
+import DropPrediction from './DropPrediction'
 import DropsSummary from './DropsSummary'
 import DropsTable from './DropsTable'
 import * as React from 'react'
@@ -26,6 +27,9 @@ export default hot(() => {
   return <React.Fragment>
     <CssBaseline />
     <Container>
+
+      <Typography variant="h2">Prediction</Typography>
+      <DropPrediction {...dropsAnalysis.summary} />
 
       <Typography variant="h2">Analysis</Typography>
       <DropsSummary {...dropsAnalysis.summary} />
