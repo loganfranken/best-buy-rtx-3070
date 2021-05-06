@@ -59,8 +59,8 @@ analysis.days.forEach(day => {
     if(lastDay != null)
     {
         // Calculate: Days Since Last Drop
-        const currDayFirstInStock = moment(day.drops[0].inStock);
-        const lastDayLastInStock = moment(lastDay.drops[lastDay.drops.length - 1].inStock);
+        const currDayFirstInStock = moment(day.drops[0].inStock).set({ hours: 0, minutes: 0, seconds: 0, milliseconds: 0 });
+        const lastDayLastInStock = moment(lastDay.drops[lastDay.drops.length - 1].inStock).set({ hours: 0, minutes: 0, seconds: 0, milliseconds: 0 });
         day.daysSinceLastDrop = currDayFirstInStock.diff(lastDayLastInStock, 'days');
 
         // Calculate: Days Since Last Drop Min/Max
@@ -80,7 +80,7 @@ analysis.days.forEach(day => {
         // Calculate: Minutes Since Last Drop
         drop.minutesSinceLastDrop = (lastDrop === null)
             ? 0
-            : moment(drop.inStock).diff(lastDrop.outOfStock, 'minutes');
+            : moment(drop.inStock).diff(lastDrop.inStock, 'minutes');
 
         // Calculate: Same Day Drops Diff Min/Max
         if(drop.minutesSinceLastDrop > 0)

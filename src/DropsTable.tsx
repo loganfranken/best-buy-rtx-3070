@@ -22,13 +22,18 @@ export default ({ days }: Props) => <TableContainer>
                 <TableRow>
                     <TableCell rowSpan={drops.length}>{date}</TableCell>
                     <TableCell rowSpan={drops.length}>{weekday}</TableCell>
-                    <TableCell>{moment(drops[0].inStock).format('H:mm A')}</TableCell>
+                    <TableCell>{moment(drops[0].inStock).format('h:mm A')}</TableCell>
                     <TableCell>{daysSinceLastDrop == 0 ? '--' : `${daysSinceLastDrop} days`}</TableCell>
                 </TableRow>
                 {drops.slice(1).map(({ inStock, minutesSinceLastDrop }) =>
                     <TableRow>
                         <TableCell>{moment(inStock).format('H:mm A')}</TableCell>
-                        <TableCell>{minutesSinceLastDrop} minutes</TableCell>
+                        <TableCell>
+                            {minutesSinceLastDrop > 60
+                                ? `${Math.floor(minutesSinceLastDrop/60)} hour ${minutesSinceLastDrop%60} minutes`
+                                : `${minutesSinceLastDrop} minutes`
+                            }
+                        </TableCell>
                     </TableRow>
                 )}
             </React.Fragment>
