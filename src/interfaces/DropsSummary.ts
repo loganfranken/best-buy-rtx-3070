@@ -1,3 +1,5 @@
+import Weekday from './Weekday'
+
 export default interface DropsSummary {
     earliestDropTime: string,
     latestDropTime: string,
@@ -6,5 +8,6 @@ export default interface DropsSummary {
     averageDropLength: number,
     minDropDiff: number,
     maxDropDiff: number,
-    averageDropDiff: number
+    averageDropDiff: number,
+    weekdayBreakdown: Weekday[]
 }

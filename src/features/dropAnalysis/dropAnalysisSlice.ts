@@ -7,7 +7,10 @@ const initialState = {
         latestDropTime: '',
         minDropLength: 0,
         maxDropLength: 0,
-        averageDropLength: 0
+        averageDropLength: 0,
+        minDropDiff: 0,
+        maxDropDiff: 0,
+        weekdayBreakdown: []
     }
 }
 

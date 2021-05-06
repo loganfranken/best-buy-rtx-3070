@@ -142,36 +142,43 @@
         }
     ],
     "summary": {
-        "weekdayBreakdown": {
-            "sunday": {
+        "weekdayBreakdown": [
+            {
+                "name": "Sunday",
                 "count": 0,
                 "percentage": 0
             },
-            "monday": {
+            {
+                "name": "Monday",
                 "count": 0,
                 "percentage": 0
             },
-            "tuesday": {
+            {
+                "name": "Tuesday",
                 "count": 2,
                 "percentage": 0.25
             },
-            "wednesday": {
+            {
+                "name": "Wednesday",
                 "count": 1,
                 "percentage": 0.125
             },
-            "thursday": {
+            {
+                "name": "Thursday",
                 "count": 2,
                 "percentage": 0.25
             },
-            "friday": {
+            {
+                "name": "Friday",
                 "count": 3,
                 "percentage": 0.375
             },
-            "saturday": {
+            {
+                "name": "Saturday",
                 "count": 0,
                 "percentage": 0
             }
-        },
+        ],
         "minSameDayDrops": 1,
         "maxSameDayDrops": 3,
         "minSameDayDiff": 12,

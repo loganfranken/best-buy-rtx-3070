@@ -6,14 +6,15 @@ const analysis = {};
 analysis.days = JSON.parse(fs.readFileSync(process.argv.slice(2)[0]));
 analysis.summary = {};
 
-analysis.summary.weekdayBreakdown = {
-    sunday: { count: 0, percentage: 0 },
-    monday: { count: 0, percentage: 0 },
-    tuesday: { count: 0, percentage: 0 },
-    wednesday: { count: 0, percentage: 0 },
-    thursday: { count: 0, percentage: 0 },
-    friday: { count: 0, percentage: 0 },
-    saturday: { count: 0, percentage: 0 }
+analysis.summary.weekdayBreakdown = [];
+const weekdayBreakdown = {
+    sunday: { name: 'Sunday', count: 0 },
+    monday: { name: 'Monday', count: 0 },
+    tuesday: { name: 'Tuesday', count: 0 },
+    wednesday: { name: 'Wednesday', count: 0 },
+    thursday: { name: 'Thursday', count: 0 },
+    friday: { name: 'Friday', count: 0 },
+    saturday: { name: 'Saturday', count: 0 }
 };
 
 let sameDayDropTotal = 0;
@@ -50,7 +51,7 @@ analysis.days.forEach(day => {
     day.weekday = inStock.format('dddd');
 
     // Calculate: Day of Week Count
-    analysis.summary.weekdayBreakdown[day.weekday.toLowerCase()].count++;
+    weekdayBreakdown[day.weekday.toLowerCase()].count++;
 
     // Calculate: Same Day Drops Min/Max
     analysis.summary.minSameDayDrops = (analysis.summary.minSameDayDrops === null || day.drops.length < analysis.summary.minSameDayDrops) ? day.drops.length : analysis.summary.minSameDayDrops;
@@ -115,10 +116,13 @@ analysis.summary.averageSameDayDrops = Math.round(sameDayDropTotal/analysis.days
 analysis.summary.averageSameDayDiffs = Math.round(sameDayDiffTotal/sameDayDiffTotalCount);
 
 // Calculate: Day Breakdown Percentages
-for(const weekdayName in analysis.summary.weekdayBreakdown)
+for(const weekdayName in weekdayBreakdown)
 {
-    const weekday = analysis.summary.weekdayBreakdown[weekdayName];
-    weekday.percentage = (weekday.count/analysis.days.length);
+    const weekday = weekdayBreakdown[weekdayName];
+    analysis.summary.weekdayBreakdown.push({
+        ...weekday,
+        percentage: (weekday.count/analysis.days.length)
+    });
 }
 
 // Calculate: Average Drop Diff
