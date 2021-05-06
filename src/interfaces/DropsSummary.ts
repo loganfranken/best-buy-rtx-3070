@@ -3,5 +3,8 @@ export default interface DropsSummary {
     latestDropTime: string,
     minDropLength: number,
     maxDropLength: number,
-    averageDropLength: number
+    averageDropLength: number,
+    minDropDiff: number,
+    maxDropDiff: number,
+    averageDropDiff: number
 }

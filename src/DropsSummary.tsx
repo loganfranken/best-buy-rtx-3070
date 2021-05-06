@@ -6,7 +6,10 @@ interface Props {
     latestDropTime: string,
     minDropLength: number,
     maxDropLength: number,
-    averageDropLength: number
+    averageDropLength: number,
+    minDropDiff: number,
+    maxDropDiff: number,
+    averageDropDiff: number
 }
 
 export default (summary: Props) => <React.Fragment>
@@ -17,13 +20,12 @@ export default (summary: Props) => <React.Fragment>
         Drops last <strong>{summary.minDropLength} - {summary.maxDropLength} minutes</strong> (on average, <strong>{summary.averageDropLength} minutes</strong>).
     </Typography>
 
-    {/* <Typography variant="h3">Days Between Drops</Typography>
+    <Typography variant="h3">Days Between Drops</Typography>
     <Typography variant="body1">
-        There are <strong>{minimumDropDiff} - {maximumDropDiff}</strong> days
-        (on average, <strong>{averageDropDiff}</strong> days) between each drop.
+        There are <strong>{summary.minDropDiff} - {summary.maxDropDiff} days</strong> (on average, <strong>{summary.averageDropDiff} days</strong>) between each drop.
     </Typography>
 
-    <Typography variant="h3">Weekdays</Typography>
+    {/* <Typography variant="h3">Weekdays</Typography>
     <Typography variant="body1">
         A drop can occur on the following weekdays:
         {

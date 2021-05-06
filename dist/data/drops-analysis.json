@@ -184,7 +184,7 @@
         "maxDropLength": 39,
         "averageSameDayDrops": 2,
         "averageSameDayDiffs": 43,
-        "averageDropDiffs": 14,
+        "averageDropDiff": 14,
         "averageDropLength": 9
     }
 }

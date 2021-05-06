@@ -122,7 +122,7 @@ for(const weekdayName in analysis.summary.weekdayBreakdown)
 }
 
 // Calculate: Average Drop Diff
-analysis.summary.averageDropDiffs = Math.round(dropDiffTotal/analysis.days.length);
+analysis.summary.averageDropDiff = Math.round(dropDiffTotal/analysis.days.length);
 
 // Calculate: Earliest/Latest Drop Times
 analysis.summary.earliestDropTime = moment(analysis.summary.earliestDropTime).tz('America/Los_Angeles').format("h:mm A");
