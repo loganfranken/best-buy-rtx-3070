@@ -141,45 +141,50 @@
             "daysSinceLastDrop": 13
         }
     ],
-    "weekdayBreakdown": {
-        "sunday": {
-            "count": 0,
-            "percentage": 0
+    "summary": {
+        "weekdayBreakdown": {
+            "sunday": {
+                "count": 0,
+                "percentage": 0
+            },
+            "monday": {
+                "count": 0,
+                "percentage": 0
+            },
+            "tuesday": {
+                "count": 2,
+                "percentage": 0.25
+            },
+            "wednesday": {
+                "count": 1,
+                "percentage": 0.125
+            },
+            "thursday": {
+                "count": 2,
+                "percentage": 0.25
+            },
+            "friday": {
+                "count": 3,
+                "percentage": 0.375
+            },
+            "saturday": {
+                "count": 0,
+                "percentage": 0
+            }
         },
-        "monday": {
-            "count": 0,
-            "percentage": 0
-        },
-        "tuesday": {
-            "count": 2,
-            "percentage": 0.25
-        },
-        "wednesday": {
-            "count": 1,
-            "percentage": 0.125
-        },
-        "thursday": {
-            "count": 2,
-            "percentage": 0.25
-        },
-        "friday": {
-            "count": 3,
-            "percentage": 0.375
-        },
-        "saturday": {
-            "count": 0,
-            "percentage": 0
-        }
-    },
-    "minSameDayDrops": 1,
-    "maxSameDayDrops": 3,
-    "minSameDayDiff": 12,
-    "maxSameDayDiff": 81,
-    "minDropDiff": 13,
-    "maxDropDiff": 21,
-    "earliestDropTime": "08:07",
-    "latestDropTime": "13:27",
-    "averageSameDayDrops": 2,
-    "averageSameDayDiffs": 43,
-    "averageDropDiffs": 14
+        "minSameDayDrops": 1,
+        "maxSameDayDrops": 3,
+        "minSameDayDiff": 12,
+        "maxSameDayDiff": 81,
+        "minDropDiff": 13,
+        "maxDropDiff": 21,
+        "earliestDropTime": "8:15 AM",
+        "latestDropTime": "1:41 PM",
+        "minDropLength": 3,
+        "maxDropLength": 39,
+        "averageSameDayDrops": 2,
+        "averageSameDayDiffs": 43,
+        "averageDropDiffs": 14,
+        "averageDropLength": 9
+    }
 }

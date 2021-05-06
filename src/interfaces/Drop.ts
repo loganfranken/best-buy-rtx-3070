@@ -1,4 +1,6 @@
 export default interface Drop {
     inStock: string,
-    minutesSinceLastDrop: number
+    outOfStock: string,
+    minutesSinceLastDrop: number,
+    dropLength: number
 }

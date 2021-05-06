@@ -4,8 +4,9 @@ import momentTimezone from 'moment-timezone';
 
 const analysis = {};
 analysis.days = JSON.parse(fs.readFileSync(process.argv.slice(2)[0]));
+analysis.summary = {};
 
-analysis.weekdayBreakdown = {
+analysis.summary.weekdayBreakdown = {
     sunday: { count: 0, percentage: 0 },
     monday: { count: 0, percentage: 0 },
     tuesday: { count: 0, percentage: 0 },
@@ -16,25 +17,31 @@ analysis.weekdayBreakdown = {
 };
 
 let sameDayDropTotal = 0;
-analysis.minSameDayDrops = null;
-analysis.maxSameDayDrops = null;
+analysis.summary.minSameDayDrops = null;
+analysis.summary.maxSameDayDrops = null;
 
 let sameDayDiffTotal = 0;
 let sameDayDiffTotalCount = 0;
-analysis.minSameDayDiff = null;
-analysis.maxSameDayDiff = null;
+analysis.summary.minSameDayDiff = null;
+analysis.summary.maxSameDayDiff = null;
 
 let dropDiffTotal = 0;
-analysis.minDropDiff = null;
-analysis.maxDropDiff = null;
+analysis.summary.minDropDiff = null;
+analysis.summary.maxDropDiff = null;
 
-analysis.earliestDropTime = null;
-analysis.latestDropTime = null;
+analysis.summary.earliestDropTime = null;
+analysis.summary.latestDropTime = null;
+
+let dropLengthTotal = 0;
+let dropLengthTotalCount = 0;
+analysis.summary.minDropLength = null;
+analysis.summary.maxDropLength = null;
 
 let lastDay = null;
 analysis.days.forEach(day => {
 
     const inStock = moment(day.drops[0].inStock);
+    const outOfStock = moment(day.drops[0].outOfStock);
 
     // Calculate: Date
     day.date = inStock.format('M/D/YY');
@@ -43,17 +50,17 @@ analysis.days.forEach(day => {
     day.weekday = inStock.format('dddd');
 
     // Calculate: Day of Week Count
-    analysis.weekdayBreakdown[day.weekday.toLowerCase()].count++;
+    analysis.summary.weekdayBreakdown[day.weekday.toLowerCase()].count++;
 
     // Calculate: Same Day Drops Min/Max
-    analysis.minSameDayDrops = (analysis.minSameDayDrops === null || day.drops.length < analysis.minSameDayDrops) ? day.drops.length : analysis.minSameDayDrops;
-    analysis.maxSameDayDrops = (analysis.maxSameDayDrops === null || day.drops.length > analysis.maxSameDayDrops) ? day.drops.length : analysis.maxSameDayDrops;
+    analysis.summary.minSameDayDrops = (analysis.summary.minSameDayDrops === null || day.drops.length < analysis.summary.minSameDayDrops) ? day.drops.length : analysis.summary.minSameDayDrops;
+    analysis.summary.maxSameDayDrops = (analysis.summary.maxSameDayDrops === null || day.drops.length > analysis.summary.maxSameDayDrops) ? day.drops.length : analysis.summary.maxSameDayDrops;
     sameDayDropTotal += day.drops.length;
 
     // Calculate: Earliest/Latest Drop Times
-    const normalizedInStock = inStock.clone().set({ year: 0, month: 0, date: 0 });
-    analysis.earliestDropTime = (analysis.earliestDropTime === null || normalizedInStock.isBefore(analysis.earliestDropTime)) ? normalizedInStock : analysis.earliestDropTime;
-    analysis.latestDropTime = (analysis.latestDropTime === null || normalizedInStock.isAfter(analysis.latestDropTime)) ? normalizedInStock : analysis.latestDropTime;
+    const minutesOfDay = (m) => m.minutes() + m.hours() * 60; // Source: https://github.com/moment/moment/issues/1199
+    analysis.summary.earliestDropTime = (analysis.summary.earliestDropTime === null || minutesOfDay(inStock) < minutesOfDay(analysis.summary.earliestDropTime)) ? inStock : analysis.summary.earliestDropTime;
+    analysis.summary.latestDropTime = (analysis.summary.latestDropTime === null || minutesOfDay(outOfStock) > minutesOfDay(analysis.summary.latestDropTime)) ? outOfStock : analysis.summary.latestDropTime;
 
     day.daysSinceLastDrop = 0;
     if(lastDay != null)
@@ -64,8 +71,8 @@ analysis.days.forEach(day => {
         day.daysSinceLastDrop = currDayFirstInStock.diff(lastDayLastInStock, 'days');
 
         // Calculate: Days Since Last Drop Min/Max
-        analysis.minDropDiff = (analysis.minDropDiff === null || day.daysSinceLastDrop < analysis.minDropDiff) ? day.daysSinceLastDrop : analysis.minDropDiff;
-        analysis.maxDropDiff = (analysis.maxDropDiff === null || day.daysSinceLastDrop > analysis.maxDropDiff) ? day.daysSinceLastDrop : analysis.maxDropDiff;
+        analysis.summary.minDropDiff = (analysis.summary.minDropDiff === null || day.daysSinceLastDrop < analysis.summary.minDropDiff) ? day.daysSinceLastDrop : analysis.summary.minDropDiff;
+        analysis.summary.maxDropDiff = (analysis.summary.maxDropDiff === null || day.daysSinceLastDrop > analysis.summary.maxDropDiff) ? day.daysSinceLastDrop : analysis.summary.maxDropDiff;
         dropDiffTotal += day.daysSinceLastDrop;
     }
 
@@ -76,6 +83,10 @@ analysis.days.forEach(day => {
 
         // Calculate: Length of Drop
         drop.dropLength = moment(drop.outOfStock).diff(drop.inStock, 'minutes');
+        analysis.summary.minDropLength = (analysis.summary.minDropLength === null || drop.dropLength < analysis.summary.minDropLength) ? drop.dropLength : analysis.summary.minDropLength;
+        analysis.summary.maxDropLength = (analysis.summary.maxSameDayDiff === null || drop.dropLength > analysis.summary.maxDropLength) ? drop.dropLength : analysis.summary.maxDropLength;
+        dropLengthTotal += drop.dropLength;
+        dropLengthTotalCount++;
 
         // Calculate: Minutes Since Last Drop
         drop.minutesSinceLastDrop = (lastDrop === null)
@@ -85,8 +96,8 @@ analysis.days.forEach(day => {
         // Calculate: Same Day Drops Diff Min/Max
         if(drop.minutesSinceLastDrop > 0)
         {
-            analysis.minSameDayDiff = (analysis.minSameDayDiff === null || drop.minutesSinceLastDrop < analysis.minSameDayDiff) ? drop.minutesSinceLastDrop : analysis.minSameDayDiff;
-            analysis.maxSameDayDiff = (analysis.maxSameDayDiff === null || drop.minutesSinceLastDrop > analysis.maxSameDayDiff) ? drop.minutesSinceLastDrop : analysis.maxSameDayDiff;
+            analysis.summary.minSameDayDiff = (analysis.summary.minSameDayDiff === null || drop.minutesSinceLastDrop < analysis.summary.minSameDayDiff) ? drop.minutesSinceLastDrop : analysis.summary.minSameDayDiff;
+            analysis.summary.maxSameDayDiff = (analysis.summary.maxSameDayDiff === null || drop.minutesSinceLastDrop > analysis.summary.maxSameDayDiff) ? drop.minutesSinceLastDrop : analysis.summary.maxSameDayDiff;
             sameDayDiffTotal += drop.minutesSinceLastDrop;
             sameDayDiffTotalCount++;
         }
@@ -98,22 +109,26 @@ analysis.days.forEach(day => {
 });
 
 // Calculate: Average Number of Same Day Drops
-analysis.averageSameDayDrops = Math.round(sameDayDropTotal/analysis.days.length);
+analysis.summary.averageSameDayDrops = Math.round(sameDayDropTotal/analysis.days.length);
 
 // Calculate: Average Same Day Diff
-analysis.averageSameDayDiffs = Math.round(sameDayDiffTotal/sameDayDiffTotalCount);
+analysis.summary.averageSameDayDiffs = Math.round(sameDayDiffTotal/sameDayDiffTotalCount);
 
 // Calculate: Day Breakdown Percentages
-for(const weekdayName in analysis.weekdayBreakdown)
+for(const weekdayName in analysis.summary.weekdayBreakdown)
 {
-    const weekday = analysis.weekdayBreakdown[weekdayName];
+    const weekday = analysis.summary.weekdayBreakdown[weekdayName];
     weekday.percentage = (weekday.count/analysis.days.length);
 }
 
 // Calculate: Average Drop Diff
-analysis.averageDropDiffs = Math.round(dropDiffTotal/analysis.days.length);
+analysis.summary.averageDropDiffs = Math.round(dropDiffTotal/analysis.days.length);
 
-analysis.earliestDropTime = moment(analysis.earliestDropTime).tz('America/Los_Angeles').format("HH:mm");
-analysis.latestDropTime = moment(analysis.latestDropTime).tz('America/Los_Angeles').format("HH:mm");
+// Calculate: Earliest/Latest Drop Times
+analysis.summary.earliestDropTime = moment(analysis.summary.earliestDropTime).tz('America/Los_Angeles').format("h:mm A");
+analysis.summary.latestDropTime = moment(analysis.summary.latestDropTime).tz('America/Los_Angeles').format("h:mm A");
+
+// Calculate: Average Drop Length
+analysis.summary.averageDropLength = Math.round(dropLengthTotal/dropLengthTotalCount);
 
 console.log(JSON.stringify(analysis, null, 4));

@@ -1,6 +1,6 @@
-
 import ApplicationState from './interfaces/ApplicationState'
-import { Container, CssBaseline } from '@material-ui/core'
+import { Container, CssBaseline, Typography } from '@material-ui/core'
+import DropsSummary from './DropsSummary'
 import DropsTable from './DropsTable'
 import * as React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,7 +9,7 @@ import { hot } from 'react-hot-loader/root'
 
 export default hot(() => {
 
-  const dropAnalysis = useSelector((state: ApplicationState) => state.dropAnalysis);
+  const dropsAnalysis = useSelector((state: ApplicationState) => state.dropsAnalysis);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,7 +26,13 @@ export default hot(() => {
   return <React.Fragment>
     <CssBaseline />
     <Container>
-      <DropsTable days={dropAnalysis.days} />
+
+      <Typography variant="h2">Analysis</Typography>
+      <DropsSummary {...dropsAnalysis.summary} />
+
+      <Typography variant="h2">Raw Data</Typography>
+      <DropsTable days={dropsAnalysis.days} />
+    
     </Container>
   </React.Fragment>
 });
