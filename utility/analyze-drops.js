@@ -3,7 +3,7 @@ import moment from 'moment';
 import momentTimezone from 'moment-timezone';
 
 const analysis = {};
-analysis.days = JSON.parse(fs.readFileSync('data/drops.json'));
+analysis.days = JSON.parse(fs.readFileSync(process.argv.slice(2)[0]));
 
 analysis.weekdayBreakdown = {
     sunday: { count: 0, percentage: 0 },
@@ -36,9 +36,14 @@ analysis.days.forEach(day => {
 
     const inStock = moment(day.drops[0].inStock);
 
+    // Calculate: Date
+    day.date = inStock.format('M/D/YY');
+
+    // Calculate: Day of Week
+    day.weekday = inStock.format('dddd');
+
     // Calculate: Day of Week Count
-    const weekday = inStock.format('dddd').toLowerCase();
-    analysis.weekdayBreakdown[weekday].count++;
+    analysis.weekdayBreakdown[day.weekday.toLowerCase()].count++;
 
     // Calculate: Same Day Drops Min/Max
     analysis.minSameDayDrops = (analysis.minSameDayDrops === null || day.drops.length < analysis.minSameDayDrops) ? day.drops.length : analysis.minSameDayDrops;

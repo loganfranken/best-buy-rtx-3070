@@ -1,3 +1,5 @@
+import DropAnalysis from './DropAnalysis'
+
 export default interface ApplicationState {
-    dropAnalysis: object
+    dropAnalysis: DropAnalysis
 }

@@ -26,7 +26,7 @@ export default hot(() => {
   return <React.Fragment>
     <CssBaseline />
     <Container>
-      <DropsTable />
+      <DropsTable days={dropAnalysis.days} />
     </Container>
   </React.Fragment>
 });

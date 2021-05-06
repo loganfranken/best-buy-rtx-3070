@@ -91,6 +91,6 @@ request(url, (error, response, body) => {
 
     days.push(currDay);
 
-    console.log(JSON.stringify(days));
+    console.log(JSON.stringify(days, null, 4));
 
 });

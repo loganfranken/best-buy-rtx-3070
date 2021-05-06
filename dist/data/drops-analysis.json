@@ -21,6 +21,8 @@
                     "minutesSinceLastDrop": 36
                 }
             ],
+            "date": "1/5/21",
+            "weekday": "Tuesday",
             "daysSinceLastDrop": 0
         },
         {
@@ -32,6 +34,8 @@
                     "minutesSinceLastDrop": 0
                 }
             ],
+            "date": "1/22/21",
+            "weekday": "Friday",
             "daysSinceLastDrop": 16
         },
         {
@@ -55,6 +59,8 @@
                     "minutesSinceLastDrop": 12
                 }
             ],
+            "date": "2/9/21",
+            "weekday": "Tuesday",
             "daysSinceLastDrop": 17
         },
         {
@@ -72,6 +78,8 @@
                     "minutesSinceLastDrop": 75
                 }
             ],
+            "date": "2/25/21",
+            "weekday": "Thursday",
             "daysSinceLastDrop": 16
         },
         {
@@ -83,6 +91,8 @@
                     "minutesSinceLastDrop": 0
                 }
             ],
+            "date": "3/12/21",
+            "weekday": "Friday",
             "daysSinceLastDrop": 14
         },
         {
@@ -100,6 +110,8 @@
                     "minutesSinceLastDrop": 73
                 }
             ],
+            "date": "4/2/21",
+            "weekday": "Friday",
             "daysSinceLastDrop": 21
         },
         {
@@ -111,6 +123,8 @@
                     "minutesSinceLastDrop": 0
                 }
             ],
+            "date": "4/15/21",
+            "weekday": "Thursday",
             "daysSinceLastDrop": 12
         },
         {
@@ -122,6 +136,8 @@
                     "minutesSinceLastDrop": 0
                 }
             ],
+            "date": "4/28/21",
+            "weekday": "Wednesday",
             "daysSinceLastDrop": 13
         }
     ],
