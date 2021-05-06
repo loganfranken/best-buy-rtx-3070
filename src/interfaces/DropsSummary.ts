@@ -9,5 +9,11 @@ export default interface DropsSummary {
     minDropDiff: number,
     maxDropDiff: number,
     averageDropDiff: number,
-    weekdayBreakdown: Weekday[]
+    weekdayBreakdown: Weekday[],
+    minSameDayDrops: number,
+    maxSameDayDrops: number,
+    averageSameDayDrops: number,
+    minSameDayDiff: number,
+    maxSameDayDiff: number,
+    averageSameDayDiff: number
 }

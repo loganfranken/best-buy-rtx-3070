@@ -11,7 +11,13 @@ interface Props {
     minDropDiff: number,
     maxDropDiff: number,
     averageDropDiff: number,
-    weekdayBreakdown: Weekday[]
+    weekdayBreakdown: Weekday[],
+    minSameDayDrops: number,
+    maxSameDayDrops: number,
+    averageSameDayDrops: number,
+    minSameDayDiff: number,
+    maxSameDayDiff: number,
+    averageSameDayDiff: number
 }
 
 export default (summary: Props) => <React.Fragment>
@@ -42,11 +48,11 @@ export default (summary: Props) => <React.Fragment>
         }
     </Typography>
 
-    {/* <Typography variant="h3">Same Day Drops</Typography>
+    <Typography variant="h3">Same Day Drops</Typography>
     <Typography variant="body1">
-        On a given day, there can be <strong>{minimumSameDayDrops} - {maximumSameDayDrops} drops</strong>
-        (on average, <strong>{averageSameDayDrops} drops</strong>), with a span of
-        of <strong>{minimumSameDayDiff} - {maximumSameDayDiff} minutes</strong>
-        (on average, <strong>{averageSameDayDiff}</strong> minutes) between each drop.
-    </Typography> */}
+        On a given day, there can be <strong>{summary.minSameDayDrops} - {summary.maxSameDayDrops} drops</strong>{' '}
+        (on average, <strong>{summary.averageSameDayDrops} drops</strong>), with a span of{' '}
+        <strong>{summary.minSameDayDiff} - {summary.maxSameDayDiff} minutes</strong>{' '}
+        (on average, <strong>{summary.averageSameDayDiff} minutes</strong>) between each drop.
+    </Typography>
 </React.Fragment>

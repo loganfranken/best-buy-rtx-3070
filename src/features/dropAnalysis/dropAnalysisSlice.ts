@@ -10,7 +10,13 @@ const initialState = {
         averageDropLength: 0,
         minDropDiff: 0,
         maxDropDiff: 0,
-        weekdayBreakdown: []
+        weekdayBreakdown: [],
+        minSameDayDrops: 0,
+        maxSameDayDrops: 0,
+        averageSameDayDrops: 0,
+        minSameDayDiff: 0,
+        maxSameDayDiff: 0,
+        averageSameDayDiff: 0
     }
 }
 

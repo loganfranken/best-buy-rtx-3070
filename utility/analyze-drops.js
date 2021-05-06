@@ -113,7 +113,7 @@ analysis.days.forEach(day => {
 analysis.summary.averageSameDayDrops = Math.round(sameDayDropTotal/analysis.days.length);
 
 // Calculate: Average Same Day Diff
-analysis.summary.averageSameDayDiffs = Math.round(sameDayDiffTotal/sameDayDiffTotalCount);
+analysis.summary.averageSameDayDiff = Math.round(sameDayDiffTotal/sameDayDiffTotalCount);
 
 // Calculate: Day Breakdown Percentages
 for(const weekdayName in weekdayBreakdown)
