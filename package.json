@@ -14,7 +14,7 @@
     "url": "git+https://github.com/loganfranken/best-buy-rtx-3070.git"
   },
   "author": "Logan Franken <loganfranken@gmail.com> (http://www.loganfranken.com)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/loganfranken/best-buy-rtx-3070/issues"
   },
