@@ -41,6 +41,6 @@ const predictNextDay = (analysis: DropsAnalysis) => {
 
 export default (analysis: Props) => <React.Fragment>
     <Typography variant="body1">
-        The next drop might be on {predictNextDay(analysis)} from {analysis.summary.earliestDropTime} - {analysis.summary.latestDropTime}
+        <strong>The next drop might be on {predictNextDay(analysis)} from {analysis.summary.earliestDropTime} - {analysis.summary.latestDropTime}</strong>.
     </Typography>
 </React.Fragment>
