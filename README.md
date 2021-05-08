@@ -16,6 +16,6 @@ I wrote some scripts to process and prepare the [NowInStock.net data]([NowInStoc
 To run those scripts for yourself:
 
 `
-node utility/export-drops.js > ./dist/data/drops.json
-node utility/analyze-drops.js './dist/data/drops.json' > ./dist/data/drops-analysis.json
+node utility/export-drops.js > ./docs/data/drops.json
+node utility/analyze-drops.js './docs/data/drops.json' > ./docs/data/drops-analysis.json
 `
