@@ -12,10 +12,10 @@ Redux, TypeScript, and Material UI, so who cares?
 
 ## Generating Data
 
-I wrote some scripts to process and prepare the [NowInStock.net data]([NowInStock.net](https://www.nowinstock.net/full_historydetails/1483/52924/).
+I wrote some scripts to process and prepare the [NowInStock.net data](https://www.nowinstock.net/full_historydetails/1483/52924/).
 To run those scripts for yourself:
 
-`
+```
 node utility/export-drops.js > ./docs/data/drops.json
 node utility/analyze-drops.js './docs/data/drops.json' > ./docs/data/drops-analysis.json
-`
+```
