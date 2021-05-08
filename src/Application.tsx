@@ -46,7 +46,7 @@ export default hot(() => {
   useEffect(() => {
     (async () => {
 
-      const response = await fetch('/data/drops-analysis.json');
+      const response = await fetch('data/drops-analysis.json');
       const data = await response.json();
 
       dispatch({ type: 'dropAnalysis/changed', payload: data });
