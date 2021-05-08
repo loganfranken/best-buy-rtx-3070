@@ -1,13 +1,23 @@
-interface Props {
-}
+import { Typography } from '@material-ui/core'
+import * as moment from 'moment'
+import * as React from 'react'
 
-const predictNextDay = (analysis) => {
+import DropsAnalysis from './interfaces/DropsAnalysis'
+
+interface Props extends DropsAnalysis {}
+
+const predictNextDay = (analysis: DropsAnalysis) => {
 
     // Create a list of possible weekdays
     const possibleWeekdays = analysis.summary.weekdayBreakdown.filter(weekday => weekday.count > 0).map(weekday => weekday.name.toLowerCase());
 
     // Get the latest day
     const latestDay = analysis.days[analysis.days.length - 1];
+
+    if(typeof(latestDay) === 'undefined')
+    {
+        return null;
+    }
 
     // Generate the next day based on the minimum drop diff
     let nextDay = moment(latestDay.drops[0].inStock).add(analysis.summary.minDropDiff, 'days');
@@ -25,11 +35,12 @@ const predictNextDay = (analysis) => {
         nextDay = nextDay.add(1, 'days');
     }
 
-    return nextDay;
-
-    console.log(`The next drop might be on ${nextDay.format('dddd, MMM DD')} from ${analysis.earliestDropTime} - ${analysis.latestDropTime}`);
+    return moment(nextDay).format('dddd, MMMM Do YYYY');
 
 }
 
-export default (summary: Props) => <React.Fragment>
+export default (analysis: Props) => <React.Fragment>
+    <Typography variant="body1">
+        The next drop might be on {predictNextDay(analysis)} from {analysis.summary.earliestDropTime} - {analysis.summary.latestDropTime}
+    </Typography>
 </React.Fragment>

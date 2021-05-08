@@ -1,7 +1,8 @@
-import DropDay from './interfaces/DropDay'
+import { TableContainer, TableHead, TableBody, TableRow, TableCell } from "@material-ui/core"
 import * as moment from 'moment'
 import * as React from 'react'
-import { TableContainer, TableHead, TableBody, TableRow, TableCell } from "@material-ui/core"
+
+import DropDay from './interfaces/DropDay'
 
 interface Props {
     days: DropDay[]

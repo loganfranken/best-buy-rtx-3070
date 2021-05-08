@@ -1,5 +1,6 @@
-import * as React from 'react'
 import { Typography } from '@material-ui/core'
+import * as React from 'react'
+
 import Weekday from './interfaces/Weekday'
 
 interface Props {
@@ -23,7 +24,7 @@ interface Props {
 export default (summary: Props) => <React.Fragment>
     <Typography variant="h3">Drop Timing</Typography>
     <Typography variant="body1">
-        The earliest a drop will start is <strong>{summary.earliestDropTime}</strong> and
+        Based on past data, the earliest a drop will start is <strong>{summary.earliestDropTime}</strong> and
         the latest a drop will end is <strong>{summary.latestDropTime}</strong>.
         Drops last <strong>{summary.minDropLength} - {summary.maxDropLength} minutes</strong>{' '}
         (on average, <strong>{summary.averageDropLength} minutes</strong>).
