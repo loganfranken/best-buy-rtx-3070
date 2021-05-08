@@ -1,5 +1,7 @@
 # Best Buy RTX 3070 Drop Predictor
 
+**Check out the [latest prediction report](https://loganfranken.github.io/best-buy-rtx-3070/)!**
+
 Just like everyone else, I'm trying to score a **RTX 3000 series graphics card**. Specifically,
 I want the **[NVIDIA GeForce RTX 3070 Founders Edition](https://www.bestbuy.com/site/nvidia-geforce-rtx-3070-8gb-gddr6-pci-express-4-0-graphics-card-dark-platinum-and-black/6429442.p?skuId=6429442)**, sold at Best Buy.
 
