@@ -27,7 +27,7 @@ const predictNextDay = (analysis: DropsAnalysis) => {
     {
         const weekday = nextDay.format('dddd').toLowerCase();
 
-        if(possibleWeekdays.includes(weekday))
+        if(possibleWeekdays.includes(weekday) && moment().isBefore(nextDay))
         {
             break;
         }
