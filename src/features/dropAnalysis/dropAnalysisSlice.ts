@@ -3,8 +3,10 @@ import ApplicationAction from '../../interfaces/ApplicationAction'
 const initialState = {
     days: [],
     summary: {
-        earliestDropTime: '',
-        latestDropTime: '',
+        earliestDropStartTime: '',
+        latestDropStartTime: '',
+        earliestDropEndTime: '',
+        latestDropEndTime: '',
         minDropLength: 0,
         maxDropLength: 0,
         averageDropLength: 0,

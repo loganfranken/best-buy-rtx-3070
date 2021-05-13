@@ -4,8 +4,10 @@ import * as React from 'react'
 import Weekday from './interfaces/Weekday'
 
 interface Props {
-    earliestDropTime: string,
-    latestDropTime: string,
+    earliestDropStartTime: string,
+    latestDropStartTime: string,
+    earliestDropEndTime: string,
+    latestDropEndTime: string,
     minDropLength: number,
     maxDropLength: number,
     averageDropLength: number,
@@ -24,8 +26,8 @@ interface Props {
 export default (summary: Props) => <React.Fragment>
     <Typography variant="h3">Drop Timing</Typography>
     <Typography variant="body1">
-        Based on past data, the earliest a drop will start is <strong>{summary.earliestDropTime}</strong> and
-        the latest a drop will end is <strong>{summary.latestDropTime}</strong>.
+        Based on past data, the earliest a drop will start is <strong>{summary.earliestDropStartTime}</strong> and
+        the latest a drop will end is <strong>{summary.latestDropEndTime}</strong>.
         Drops last <strong>{summary.minDropLength} - {summary.maxDropLength} minutes</strong>{' '}
         (on average, <strong>{summary.averageDropLength} minutes</strong>).
     </Typography>

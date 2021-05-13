@@ -30,8 +30,11 @@ let dropDiffTotal = 0;
 analysis.summary.minDropDiff = null;
 analysis.summary.maxDropDiff = null;
 
-analysis.summary.earliestDropTime = null;
-analysis.summary.latestDropTime = null;
+analysis.summary.earliestDropStartTime = null;
+analysis.summary.latestDropStartTime = null;
+
+analysis.summary.earliestDropEndTime = null;
+analysis.summary.latestDropEndTime = null;
 
 let dropLengthTotal = 0;
 let dropLengthTotalCount = 0;
@@ -60,8 +63,12 @@ analysis.days.forEach(day => {
 
     // Calculate: Earliest/Latest Drop Times
     const minutesOfDay = (m) => m.minutes() + m.hours() * 60; // Source: https://github.com/moment/moment/issues/1199
-    analysis.summary.earliestDropTime = (analysis.summary.earliestDropTime === null || minutesOfDay(inStock) < minutesOfDay(analysis.summary.earliestDropTime)) ? inStock : analysis.summary.earliestDropTime;
-    analysis.summary.latestDropTime = (analysis.summary.latestDropTime === null || minutesOfDay(outOfStock) > minutesOfDay(analysis.summary.latestDropTime)) ? outOfStock : analysis.summary.latestDropTime;
+
+    analysis.summary.earliestDropStartTime = (analysis.summary.earliestDropStartTime === null || minutesOfDay(inStock) < minutesOfDay(analysis.summary.earliestDropStartTime)) ? inStock : analysis.summary.earliestDropStartTime;
+    analysis.summary.latestDropStartTime = (analysis.summary.latestDropStartTime === null || minutesOfDay(inStock) > minutesOfDay(analysis.summary.latestDropStartTime)) ? inStock : analysis.summary.latestDropStartTime;
+
+    analysis.summary.earliestDropEndTime = (analysis.summary.earliestDropEndTime === null || minutesOfDay(outOfStock) < minutesOfDay(analysis.summary.earliestDropEndTime)) ? outOfStock : analysis.summary.earliestDropEndTime;
+    analysis.summary.latestDropEndTime = (analysis.summary.latestDropEndTime === null || minutesOfDay(outOfStock) > minutesOfDay(analysis.summary.latestDropEndTime)) ? outOfStock : analysis.summary.latestDropEndTime;
 
     day.daysSinceLastDrop = 0;
     if(lastDay != null)
@@ -129,8 +136,10 @@ for(const weekdayName in weekdayBreakdown)
 analysis.summary.averageDropDiff = Math.round(dropDiffTotal/analysis.days.length);
 
 // Calculate: Earliest/Latest Drop Times
-analysis.summary.earliestDropTime = moment(analysis.summary.earliestDropTime).tz('America/Los_Angeles').format("h:mm A");
-analysis.summary.latestDropTime = moment(analysis.summary.latestDropTime).tz('America/Los_Angeles').format("h:mm A");
+analysis.summary.earliestDropStartTime = moment(analysis.summary.earliestDropStartTime).tz('America/Los_Angeles').format("h:mm A");
+analysis.summary.latestDropStartTime = moment(analysis.summary.latestDropStartTime).tz('America/Los_Angeles').format("h:mm A");
+analysis.summary.earliestDropEndTime = moment(analysis.summary.earliestDropEndTime).tz('America/Los_Angeles').format("h:mm A");
+analysis.summary.latestDropEndTime = moment(analysis.summary.latestDropEndTime).tz('America/Los_Angeles').format("h:mm A");
 
 // Calculate: Average Drop Length
 analysis.summary.averageDropLength = Math.round(dropLengthTotal/dropLengthTotalCount);
