@@ -7,6 +7,7 @@ const initialState = {
         latestDropStartTime: '',
         earliestDropEndTime: '',
         latestDropEndTime: '',
+        averageEarliestDropStartTime: '',
         minDropLength: 0,
         maxDropLength: 0,
         averageDropLength: 0,

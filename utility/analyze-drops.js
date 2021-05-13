@@ -36,6 +36,9 @@ analysis.summary.latestDropStartTime = null;
 analysis.summary.earliestDropEndTime = null;
 analysis.summary.latestDropEndTime = null;
 
+let earliestDropStartTimeTotal = 0;
+analysis.summary.averageEarliestDropStartTime = null;
+
 let dropLengthTotal = 0;
 let dropLengthTotalCount = 0;
 analysis.summary.minDropLength = null;
@@ -45,7 +48,8 @@ let lastDay = null;
 analysis.days.forEach(day => {
 
     const inStock = moment(day.drops[0].inStock);
-    const outOfStock = moment(day.drops[0].outOfStock);
+    const earliestOutOfStock = moment(day.drops[0].outOfStock);
+    const latestOutOfStock = moment(day.drops[day.drops.length - 1].outOfStock);
 
     // Calculate: Date
     day.date = inStock.format('M/D/YY');
@@ -67,8 +71,11 @@ analysis.days.forEach(day => {
     analysis.summary.earliestDropStartTime = (analysis.summary.earliestDropStartTime === null || minutesOfDay(inStock) < minutesOfDay(analysis.summary.earliestDropStartTime)) ? inStock : analysis.summary.earliestDropStartTime;
     analysis.summary.latestDropStartTime = (analysis.summary.latestDropStartTime === null || minutesOfDay(inStock) > minutesOfDay(analysis.summary.latestDropStartTime)) ? inStock : analysis.summary.latestDropStartTime;
 
-    analysis.summary.earliestDropEndTime = (analysis.summary.earliestDropEndTime === null || minutesOfDay(outOfStock) < minutesOfDay(analysis.summary.earliestDropEndTime)) ? outOfStock : analysis.summary.earliestDropEndTime;
-    analysis.summary.latestDropEndTime = (analysis.summary.latestDropEndTime === null || minutesOfDay(outOfStock) > minutesOfDay(analysis.summary.latestDropEndTime)) ? outOfStock : analysis.summary.latestDropEndTime;
+    analysis.summary.earliestDropEndTime = (analysis.summary.earliestDropEndTime === null || minutesOfDay(earliestOutOfStock) < minutesOfDay(analysis.summary.earliestDropEndTime)) ? earliestOutOfStock : analysis.summary.earliestDropEndTime;
+    analysis.summary.latestDropEndTime = (analysis.summary.latestDropEndTime === null || minutesOfDay(latestOutOfStock) > minutesOfDay(analysis.summary.latestDropEndTime)) ? latestOutOfStock : analysis.summary.latestDropEndTime;
+
+    // Calculate: Average Drop Start Time
+    earliestDropStartTimeTotal += (inStock.hour() * 3600 + inStock.minute() * 60);
 
     day.daysSinceLastDrop = 0;
     if(lastDay != null)
@@ -140,6 +147,13 @@ analysis.summary.earliestDropStartTime = moment(analysis.summary.earliestDropSta
 analysis.summary.latestDropStartTime = moment(analysis.summary.latestDropStartTime).tz('America/Los_Angeles').format("h:mm A");
 analysis.summary.earliestDropEndTime = moment(analysis.summary.earliestDropEndTime).tz('America/Los_Angeles').format("h:mm A");
 analysis.summary.latestDropEndTime = moment(analysis.summary.latestDropEndTime).tz('America/Los_Angeles').format("h:mm A");
+
+// Calculate: Average Drop Start Time
+const averageEarliestDropStartTime = (earliestDropStartTimeTotal/analysis.days.length);
+const averageEarliestDropStartTimeHours = Math.floor(averageEarliestDropStartTime/3600);
+const averageEarliestDropStartTimeMinutes = Math.floor((averageEarliestDropStartTime%3600) / 60);
+
+analysis.summary.averageEarliestDropStartTime = moment(`${averageEarliestDropStartTimeHours}:${(averageEarliestDropStartTimeMinutes + '').padStart(2, '0')}`, 'HH:mm').format('h:mm A');
 
 // Calculate: Average Drop Length
 analysis.summary.averageDropLength = Math.round(dropLengthTotal/dropLengthTotalCount);

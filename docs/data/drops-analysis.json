@@ -189,6 +189,7 @@
         "latestDropStartTime": "1:35 PM",
         "earliestDropEndTime": "8:34 AM",
         "latestDropEndTime": "1:41 PM",
+        "averageEarliestDropStartTime": "9:30 AM",
         "minDropLength": 3,
         "maxDropLength": 39,
         "averageSameDayDrops": 2,

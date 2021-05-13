@@ -8,6 +8,7 @@ interface Props {
     latestDropStartTime: string,
     earliestDropEndTime: string,
     latestDropEndTime: string,
+    averageEarliestDropStartTime: string,
     minDropLength: number,
     maxDropLength: number,
     averageDropLength: number,
