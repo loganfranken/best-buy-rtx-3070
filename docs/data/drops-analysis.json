@@ -139,6 +139,31 @@
             "date": "4/28/21",
             "weekday": "Wednesday",
             "daysSinceLastDrop": 13
+        },
+        {
+            "drops": [
+                {
+                    "inStock": "2021-05-13T16:10:00.000Z",
+                    "outOfStock": "2021-05-13T16:17:00.000Z",
+                    "dropLength": 7,
+                    "minutesSinceLastDrop": 0
+                },
+                {
+                    "inStock": "2021-05-13T16:30:00.000Z",
+                    "outOfStock": "2021-05-13T16:36:00.000Z",
+                    "dropLength": 6,
+                    "minutesSinceLastDrop": 20
+                },
+                {
+                    "inStock": "2021-05-13T16:51:00.000Z",
+                    "outOfStock": "2021-05-13T17:00:00.000Z",
+                    "dropLength": 9,
+                    "minutesSinceLastDrop": 21
+                }
+            ],
+            "date": "5/13/21",
+            "weekday": "Thursday",
+            "daysSinceLastDrop": 15
         }
     ],
     "summary": {
@@ -156,22 +181,22 @@
             {
                 "name": "Tuesday",
                 "count": 2,
-                "percentage": 0.25
+                "percentage": 0.2222222222222222
             },
             {
                 "name": "Wednesday",
                 "count": 1,
-                "percentage": 0.125
+                "percentage": 0.1111111111111111
             },
             {
                 "name": "Thursday",
-                "count": 2,
-                "percentage": 0.25
+                "count": 3,
+                "percentage": 0.3333333333333333
             },
             {
                 "name": "Friday",
                 "count": 3,
-                "percentage": 0.375
+                "percentage": 0.3333333333333333
             },
             {
                 "name": "Saturday",
@@ -189,12 +214,12 @@
         "latestDropStartTime": "1:35 PM",
         "earliestDropEndTime": "8:34 AM",
         "latestDropEndTime": "1:41 PM",
-        "averageEarliestDropStartTime": "9:30 AM",
+        "averageEarliestDropStartTime": "9:28 AM",
         "minDropLength": 3,
         "maxDropLength": 39,
         "averageSameDayDrops": 2,
-        "averageSameDayDiff": 43,
+        "averageSameDayDiff": 37,
         "averageDropDiff": 14,
-        "averageDropLength": 9
+        "averageDropLength": 8
     }
 }
